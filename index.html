@@ -3,17 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RENOVO MUSIC STUDIO & SCHOOL | 倉庫をリノベした音楽空間</title>
+    <title>RENOVO MUSIC STUDIO</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Oswald:wght@500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #d4af37; 
-            --bg-color: #1a1a1a;
-            --surface-color: #2d2d2d;
-            --text-color: #ffffff;
-            --accent-gray: #888888;
+            --primary-color: #d4af37; --bg-color: #1a1a1a; --text-color: #ffffff;
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Noto Sans JP', sans-serif;
@@ -23,29 +18,22 @@
             overflow-x: hidden;
         }
 
-        h1, h2, .en-title { 
-            font-family: 'Oswald', sans-serif; 
-            text-transform: uppercase; 
-            letter-spacing: 0.25em;
-            font-weight: 600;
+        /* アニメーションの「前」の状態（透明で下に隠れている） */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1.5s cubic-bezier(0.25, 1, 0.5, 1), transform 1.5s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        header {
-            padding: 20px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: fixed;
-            width: 100%;
-            z-index: 100;
-            background: rgba(26, 26, 26, 0.8);
-            backdrop-filter: blur(10px);
+        /* アニメーションの「後」の状態（スクロールが到達したら付与される） */
+        .fade-in-up.is-visible {
+            opacity: 1;
+            transform: translateY(0);
         }
-        .logo { font-size: 1.1rem; color: var(--primary-color); letter-spacing: 0.3em; }
 
+        /* レイアウト */
         .hero {
             height: 100vh;
-            /* 画像パスを正しく閉じました */
             background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1514320298574-019d8162940e?auto=format&fit=crop&w=1200&q=80');
             background-size: cover;
             background-position: center;
@@ -54,113 +42,63 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 20px;
         }
-        .hero h1 { font-size: clamp(2rem, 8vw, 3.5rem); margin-bottom: 20px; }
-        .hero p { font-size: 0.9rem; margin-bottom: 40px; color: #eee; }
-
-        .btn {
-            display: inline-block;
-            padding: 18px 50px;
-            background-color: var(--primary-color);
-            color: #000;
-            text-decoration: none;
-            font-weight: bold;
-            transition: 0.4s;
-        }
-        .btn:hover { background-color: #fff; transform: translateY(-3px); }
-
-        section { padding: 120px 20px; max-width: 1100px; margin: 0 auto; }
-        .section-title { text-align: center; margin-bottom: 60px; }
-        .section-title h2 { font-size: 2.2rem; position: relative; padding-bottom: 15px; }
-        .section-title h2::after {
-            content: ""; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
-            width: 40px; height: 2px; background: var(--primary-color);
-        }
-
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .card { background: var(--surface-color); padding: 40px; transition: 0.3s; }
-        .card:hover { transform: translateY(-10px); }
-        .card h3 { margin-bottom: 20px; color: var(--primary-color); }
-
-        /* アニメーション用スタイル */
-        .js-fade {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1), transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-        .js-fade.is-active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        footer { text-align: center; padding: 60px 20px; color: var(--accent-gray); font-size: 0.7rem; }
-
-        @media (max-width: 768px) {
-            header { padding: 15px 20px; }
-        }
+        section { padding: 150px 20px; text-align: center; min-height: 80vh; }
+        .card-container { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 50px; }
+        .card { background: #2d2d2d; padding: 40px; width: 300px; border-radius: 5px; }
+        .btn { display: inline-block; padding: 15px 40px; background: var(--primary-color); color: #000; text-decoration: none; font-weight: bold; margin-top: 20px; }
     </style>
 </head>
 <body>
 
-<header>
-    <div class="logo">RENOVO</div>
-</header>
-
-<div class="hero">
-    <p class="en-title js-fade">Old Warehouse × New Music</p>
-    <h1 class="js-fade">その響き、ヴィンテージ。</h1>
-    <p class="js-fade">築古倉庫をリノベーションした、唯一無二の音楽練習空間。</p>
-    <a href="#contact" class="btn js-fade">RESERVE / CONTACT</a>
-</div>
-
-<section id="concept">
-    <div class="section-title js-fade">
-        <h2>CONCEPT</h2>
-        <p>唯一無二の響きを、その手に。</p>
+    <div class="hero">
+        <h1 class="fade-in-up" style="font-family:'Oswald'; font-size: 3rem; letter-spacing: 0.2em;">RENOVO STUDIO</h1>
+        <p class="fade-in-up" style="transition-delay: 0.3s;">その響き、ヴィンテージ。</p>
     </div>
-    <div style="text-align: center;" class="js-fade">
-        <p>高い天井、剥き出しの鉄骨。歴史を刻んだ倉庫が、スタジオに生まれ変わりました。</p>
-    </div>
-</section>
 
-<section id="services">
-    <div class="section-title js-fade">
-        <h2>SERVICES</h2>
-    </div>
-    <div class="grid">
-        <div class="card js-fade">
-            <h3>01. STUDIO</h3>
-            <p>最新の防音設備と、倉庫の響きを活かした空間設計。</p>
+    <section id="concept">
+        <h2 class="fade-in-up">CONCEPT</h2>
+        <p class="fade-in-up" style="margin-top: 20px;">築古倉庫をリノベーションした音楽空間。</p>
+    </section>
+
+    <section id="services">
+        <h2 class="fade-in-up">SERVICES</h2>
+        <div class="card-container">
+            <div class="card fade-in-up" style="transition-delay: 0.2s;">
+                <h3>STUDIO</h3>
+                <p>24時間利用可能な練習室</p>
+            </div>
+            <div class="card fade-in-up" style="transition-delay: 0.4s;">
+                <h3>SCHOOL</h3>
+                <p>プロ講師による個別指導</p>
+            </div>
         </div>
-        <div class="card js-fade">
-            <h3>02. SCHOOL</h3>
-            <p>経験豊富な講師陣による個別レッスン。</p>
+    </section>
+
+    <section id="cta">
+        <div class="fade-in-up">
+            <h2>RESERVE</h2>
+            <a href="#" class="btn">お問い合わせ</a>
         </div>
-    </div>
-</section>
+    </section>
 
-<footer id="contact">
-    &copy; 2026 RENOVO MUSIC STUDIO. Developed by hiroki222222
-</footer>
-
-<script>
-    const targets = document.querySelectorAll('.js-fade');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('is-active');
-            }
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                // 画面の中に要素が入ってきたら
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible'); // is-visibleクラスをつける
+                }
+            });
+        }, {
+            threshold: 0.1 // 10%見えたら発動
         });
-    }, { 
-        rootMargin: '0px 0px -10% 0px', // 少し早めにアニメーション開始
-        threshold: 0 
-    });
 
-    targets.forEach(target => {
-        observer.observe(target);
-    });
-</script>
+        // fade-in-upという名前がついたすべての要素を監視する
+        document.querySelectorAll('.fade-in-up').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
 
 </body>
 </html>
