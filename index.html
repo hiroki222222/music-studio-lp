@@ -7,7 +7,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Oswald:wght@500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #d4af37; --bg-color: #1a1a1a; --text-color: #ffffff;
+            --primary-color: #d4af37;
+            --bg-color: #1a1a1a;
+            --text-color: #ffffff;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -18,87 +20,96 @@
             overflow-x: hidden;
         }
 
-        /* アニメーションの「前」の状態（透明で下に隠れている） */
-        .fade-in-up {
+        /* --- 【重要】アニメーションの設定 --- */
+        .fade-in {
             opacity: 0;
             transform: translateY(50px);
-            transition: opacity 1.5s cubic-bezier(0.25, 1, 0.5, 1), transform 1.5s cubic-bezier(0.25, 1, 0.5, 1);
+            transition: opacity 1.2s ease-out, transform 1.2s ease-out;
         }
-
-        /* アニメーションの「後」の状態（スクロールが到達したら付与される） */
-        .fade-in-up.is-visible {
+        /* スクロールが当たった時に付与されるクラス */
+        .fade-in.is-active {
             opacity: 1;
             transform: translateY(0);
         }
 
-        /* レイアウト */
+        /* レイアウト用CSS */
+        header { padding: 20px; position: fixed; width: 100%; z-index: 100; background: rgba(26,26,26,0.8); backdrop-filter: blur(5px); }
+        .logo { color: var(--primary-color); font-family: 'Oswald'; letter-spacing: 0.2em; }
+        
         .hero {
             height: 100vh;
             background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1514320298574-019d8162940e?auto=format&fit=crop&w=1200&q=80');
             background-size: cover;
             background-position: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
+            display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
         }
-        section { padding: 150px 20px; text-align: center; min-height: 80vh; }
-        .card-container { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 50px; }
-        .card { background: #2d2d2d; padding: 40px; width: 300px; border-radius: 5px; }
-        .btn { display: inline-block; padding: 15px 40px; background: var(--primary-color); color: #000; text-decoration: none; font-weight: bold; margin-top: 20px; }
+        .hero h1 { font-family: 'Oswald'; font-size: 3rem; letter-spacing: 0.2em; margin-bottom: 10px; }
+
+        section { padding: 100px 20px; max-width: 900px; margin: 0 auto; text-align: center; min-height: 60vh; }
+        .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 50px; }
+        .card { background: #2d2d2d; padding: 40px; border-radius: 4px; }
+        
+        .btn { display: inline-block; padding: 15px 40px; background: var(--primary-color); color: #000; text-decoration: none; font-weight: bold; margin-top: 30px; }
+        footer { padding: 50px; text-align: center; color: #888; font-size: 0.8rem; }
     </style>
 </head>
 <body>
 
+    <header><div class="logo">RENOVO</div></header>
+
     <div class="hero">
-        <h1 class="fade-in-up" style="font-family:'Oswald'; font-size: 3rem; letter-spacing: 0.2em;">RENOVO STUDIO</h1>
-        <p class="fade-in-up" style="transition-delay: 0.3s;">その響き、ヴィンテージ。</p>
+        <h1 class="fade-in">RENOVO STUDIO</h1>
+        <p class="fade-in" style="transition-delay: 0.3s;">その響き、ヴィンテージ。</p>
     </div>
 
     <section id="concept">
-        <h2 class="fade-in-up">CONCEPT</h2>
-        <p class="fade-in-up" style="margin-top: 20px;">築古倉庫をリノベーションした音楽空間。</p>
+        <h2 class="fade-in">CONCEPT</h2>
+        <p class="fade-in" style="margin-top: 20px;">
+            築古倉庫をリノベーションした、唯一無二の音楽練習空間。<br>
+            剥き出しの鉄骨と高い天井が、あなたのクリエイティビティを刺激します。
+        </p>
     </section>
 
     <section id="services">
-        <h2 class="fade-in-up">SERVICES</h2>
-        <div class="card-container">
-            <div class="card fade-in-up" style="transition-delay: 0.2s;">
+        <h2 class="fade-in">SERVICES</h2>
+        <div class="card-grid">
+            <div class="card fade-in">
                 <h3>STUDIO</h3>
-                <p>24時間利用可能な練習室</p>
+                <p>24時間利用可能な、倉庫の響きを活かしたスタジオ。</p>
             </div>
-            <div class="card fade-in-up" style="transition-delay: 0.4s;">
+            <div class="card fade-in">
                 <h3>SCHOOL</h3>
-                <p>プロ講師による個別指導</p>
+                <p>初心者歓迎。プロ講師によるマンツーマンレッスン。</p>
             </div>
         </div>
     </section>
 
-    <section id="cta">
-        <div class="fade-in-up">
-            <h2>RESERVE</h2>
-            <a href="#" class="btn">お問い合わせ</a>
+    <section id="contact">
+        <div class="fade-in">
+            <h2>CONTACT</h2>
+            <p style="margin-top:20px;">体験レッスン・スタジオ予約はこちらから</p>
+            <a href="#" class="btn">公式LINEで予約</a>
         </div>
     </section>
+
+    <footer>&copy; 2026 RENOVO MUSIC STUDIO. Developed by hiroki222222</footer>
 
     <script>
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                // 画面の中に要素が入ってきたら
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible'); // is-visibleクラスをつける
+                    entry.target.classList.add('is-active');
                 }
             });
         }, {
-            threshold: 0.1 // 10%見えたら発動
+            // 要素が20%見えたらアニメーション開始
+            threshold: 0.2
         });
 
-        // fade-in-upという名前がついたすべての要素を監視する
-        document.querySelectorAll('.fade-in-up').forEach(el => {
+        // fade-inクラスを持つすべての要素を監視
+        document.querySelectorAll('.fade-in').forEach(el => {
             observer.observe(el);
         });
     </script>
-
 </body>
 </html>
