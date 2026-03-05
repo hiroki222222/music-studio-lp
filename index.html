@@ -96,4 +96,71 @@
 
         footer { text-align: center; padding: 60px 20px; color: var(--accent-gray); font-size: 0.7rem; }
 
-        @media
+        @media (max-width: 768px) {
+            header { padding: 15px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">RENOVO</div>
+</header>
+
+<div class="hero">
+    <p class="en-title js-fade">Old Warehouse × New Music</p>
+    <h1 class="js-fade">その響き、ヴィンテージ。</h1>
+    <p class="js-fade">築古倉庫をリノベーションした、唯一無二の音楽練習空間。</p>
+    <a href="#contact" class="btn js-fade">RESERVE / CONTACT</a>
+</div>
+
+<section id="concept">
+    <div class="section-title js-fade">
+        <h2>CONCEPT</h2>
+        <p>唯一無二の響きを、その手に。</p>
+    </div>
+    <div style="text-align: center;" class="js-fade">
+        <p>高い天井、剥き出しの鉄骨。歴史を刻んだ倉庫が、スタジオに生まれ変わりました。</p>
+    </div>
+</section>
+
+<section id="services">
+    <div class="section-title js-fade">
+        <h2>SERVICES</h2>
+    </div>
+    <div class="grid">
+        <div class="card js-fade">
+            <h3>01. STUDIO</h3>
+            <p>最新の防音設備と、倉庫の響きを活かした空間設計。</p>
+        </div>
+        <div class="card js-fade">
+            <h3>02. SCHOOL</h3>
+            <p>経験豊富な講師陣による個別レッスン。</p>
+        </div>
+    </div>
+</section>
+
+<footer id="contact">
+    &copy; 2026 RENOVO MUSIC STUDIO. Developed by hiroki222222
+</footer>
+
+<script>
+    const targets = document.querySelectorAll('.js-fade');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-active');
+            }
+        });
+    }, { 
+        rootMargin: '0px 0px -10% 0px', // 少し早めにアニメーション開始
+        threshold: 0 
+    });
+
+    targets.forEach(target => {
+        observer.observe(target);
+    });
+</script>
+
+</body>
+</html>
