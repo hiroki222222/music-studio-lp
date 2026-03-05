@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RENOVO MUSIC STUDIO & SCHOOL | 倉庫をリノベした音楽空間</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Oswald:wght@500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #d4af37; /* Gold */
+            --bg-color: #1a1a1a;
+            --surface-color: #2d2d2d;
+            --text-color: #ffffff;
+            --accent-gray: #888888;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, .en-title { font-family: 'Oswald', sans-serif; text-transform: uppercase; letter-spacing: 0.1em; }
+
+        /* Header */
+        header {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+            background: rgba(26, 26, 26, 0.9);
+        }
+        .logo { font-size: 1.2rem; font-weight: bold; color: var(--primary-color); }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1514320298574-019d8162940e?auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+        .hero h1 { font-size: 2.5rem; margin-bottom: 10px; }
+        .hero p { font-size: 0.9rem; margin-bottom: 30px; }
+
+        /* CTA Button */
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background-color: var(--primary-color);
+            color: #000;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+        .btn:hover { opacity: 0.8; }
+
+        /* Sections */
+        section { padding: 80px 20px; max-width: 1000px; margin: 0 auto; }
+        .section-title { text-align: center; margin-bottom: 40px; }
+        .section-title h2 { font-size: 2rem; border-bottom: 2px solid var(--primary-color); display: inline-block; padding-bottom: 5px; }
+        .section-title p { color: var(--accent-gray); font-size: 0.8rem; margin-top: 5px; }
+
+        /* Grid Layouts */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .card { background: var(--surface-color); padding: 20px; border-radius: 4px; border-left: 4px solid var(--primary-color); }
+        .card h3 { margin-bottom: 15px; color: var(--primary-color); }
+
+        /* Access / Footer */
+        .access { background: var(--surface-color); border-radius: 8px; padding: 30px; }
+        footer { text-align: center; padding: 40px 20px; color: var(--accent-gray); font-size: 0.8rem; }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">RENOVO STUDIO</div>
+</header>
+
+<div class="hero">
+    <p class="en-title">Old Warehouse × New Music</p>
+    <h1>その響き、ヴィンテージ。</h1>
+    <p>築古倉庫をリノベーションした、唯一無二の音楽練習空間。</p>
+    <a href="#contact" class="btn">体験レッスン・予約はこちら</a>
+</div>
+
+<section id="concept">
+    <div class="section-title">
+        <h2>CONCEPT</h2>
+        <p>コンセプト</p>
+    </div>
+    <div style="text-align: center;">
+        <p>高い天井、剥き出しの鉄骨。歴史を刻んだ倉庫が、あなたのインスピレーションを刺激するスタジオに生まれ変わりました。初心者からプロまで、日常を忘れて音楽に没頭できる場所を提供します。</p>
+    </div>
+</section>
+
+<section id="services">
+    <div class="section-title">
+        <h2>SERVICES</h2>
+        <p>サービス紹介</p>
+    </div>
+    <div class="grid">
+        <div class="card">
+            <h3>Practice Studio</h3>
+            <p>最新の防音設備と、倉庫の響きを活かした空間設計。個人練習からバンドリハーサルまで対応可能です。</p>
+        </div>
+        <div class="card">
+            <h3>Music School</h3>
+            <p>経験豊富な講師陣による個別レッスン。ギター、ドラム、ピアノ等、初心者の方も歓迎します。</p>
+        </div>
+        <div class="card">
+            <h3>Creative Space</h3>
+            <p>MV撮影やイベント利用も可能。インダストリアルな空間がクリエイティビティを加速させます。</p>
+        </div>
+    </div>
+</section>
+
+<section id="price">
+    <div class="section-title">
+        <h2>PRICE</h2>
+        <p>料金体系</p>
+    </div>
+    <div class="grid">
+        <div class="card">
+            <h3>スタジオ利用</h3>
+            <p>¥1,500 / 1時間 〜</p>
+        </div>
+        <div class="card">
+            <h3>スクール月謝</h3>
+            <p>¥12,000 / 月3回 〜</p>
+        </div>
+    </div>
+</section>
+
+<section id="contact">
+    <div class="access">
+        <div class="section-title">
+            <h2>ACCESS & CONTACT</h2>
+            <p>お問い合わせ</p>
+        </div>
+        <p style="text-align: center; margin-bottom: 20px;">
+            東京都〇〇区倉庫街 1-2-3<br>
+            [Google Map読み込み箇所]
+        </p>
+        <div style="text-align: center;">
+            <a href="#" class="btn">公式LINEで予約・質問</a>
+        </div>
+    </div>
+</section>
+
+<footer>
+    &copy; 2026 RENOVO MUSIC STUDIO. Developed by hiroki222222
+</footer>
+
+</body>
+</html>
