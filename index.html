@@ -3,38 +3,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RENOVO MUSIC STUDIO & SCHOOL</title>
+    <title>RENOVO MUSIC STUDIO & SCHOOL | 倉庫をリノベした音楽空間</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Oswald:wght@500;600&display=swap" rel="stylesheet">
     <style>
-        :root { --primary-color: #d4af37; --bg-color: #1a1a1a; --surface-color: #2d2d2d; --text-color: #ffffff; }
+        :root {
+            --primary-color: #d4af37; /* ゴールド：高級感 */
+            --bg-color: #1a1a1a;      /* 背景：インダストリアル */
+            --surface-color: #2d2d2d; /* カード背景 */
+            --text-color: #ffffff;
+            --accent-gray: #888888;
+        }
+
+        /* ベーススタイル */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Noto Sans JP', sans-serif; background-color: var(--bg-color); color: var(--text-color); line-height: 1.8; overflow-x: hidden; }
-        .fade-in { opacity: 0; transform: translateY(40px); transition: 1.2s ease-out; }
-        .fade-in.is-active { opacity: 1; transform: translateY(0); }
-        
-        header { padding: 20px 40px; position: fixed; width: 100%; z-index: 100; background: rgba(26,26,26,0.8); backdrop-filter: blur(10px); display: flex; justify-content: space-between; align-items: center; }
-        .logo { color: var(--primary-color); font-family: 'Oswald'; letter-spacing: 0.2em; font-weight: 600; }
-        nav a { color: #fff; text-decoration: none; margin-left: 20px; font-size: 0.8rem; }
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
 
-        .hero { height: 100vh; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1514320298574-019d8162940e?auto=format&fit=crop&w=1200&q=80'); background-size: cover; background-position: center; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
-        .hero h1 { font-family: 'Oswald'; font-size: clamp(2.5rem, 8vw, 4rem); letter-spacing: 0.2em; }
+        /* 見出し：Oswaldフォントでスタイリッシュに */
+        h1, h2, .en-title { 
+            font-family: 'Oswald', sans-serif; 
+            text-transform: uppercase; 
+            letter-spacing: 0.25em;
+            font-weight: 600;
+        }
 
-        section { padding: 100px 20px; max-width: 1000px; margin: 0 auto; }
-        .section-title { text-align: center; margin-bottom: 60px; font-family: 'Oswald'; letter-spacing: 0.3em; color: var(--primary-color); }
+        /* ヘッダー */
+        header {
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+            background: rgba(26, 26, 26, 0.8);
+            backdrop-filter: blur(10px);
+        }
+        .logo { font-size: 1.1rem; color: var(--primary-color); letter-spacing: 0.3em; }
+        nav a { color: #fff; text-decoration: none; margin-left: 20px; font-size: 0.75rem; letter-spacing: 0.1em; }
 
+        /* ヒーローエリア */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1514320298574-019d8162940e?auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+        .hero h1 { font-size: clamp(2rem, 8vw, 3.5rem); margin-bottom: 20px; }
+        .hero p { font-size: 0.9rem; margin-bottom: 40px; color: #eee; letter-spacing: 0.1em; }
+
+        /* セクション共通 */
+        section { padding: 120px 20px; max-width: 1100px; margin: 0 auto; }
+        .section-title { text-align: center; margin-bottom: 60px; }
+        .section-title h2 { font-size: 2.2rem; position: relative; padding-bottom: 15px; color: var(--primary-color); }
+        .section-title h2::after {
+            content: ""; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+            width: 40px; height: 2px; background: var(--primary-color);
+        }
+        .section-title p { color: var(--accent-gray); font-size: 0.75rem; margin-top: 15px; font-weight: bold; }
+
+        /* グリッドレイアウト */
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .card { background: var(--surface-color); padding: 30px; border-radius: 2px; }
-        
-        /* 料金表用スタイル */
-        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-        th, td { border-bottom: 1px solid #444; padding: 15px; text-align: left; }
-        th { color: var(--primary-color); font-size: 0.9rem; }
+        .card { background: var(--surface-color); padding: 40px; border-radius: 2px; transition: 0.3s; }
+        .card:hover { transform: translateY(-10px); background: #363636; }
+        .card h3 { margin-bottom: 20px; color: var(--primary-color); font-size: 1.3rem; }
 
-        .btn { display: inline-block; padding: 18px 50px; background: var(--primary-color); color: #000; text-decoration: none; font-weight: bold; transition: 0.3s; margin-top: 20px; }
-        .btn:hover { background: #fff; }
+        /* 料金表：直感的な日本語表記 */
+        .price-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .price-table th, .price-table td { border-bottom: 1px solid #444; padding: 20px 15px; text-align: left; }
+        .price-table th { color: var(--primary-color); font-weight: normal; width: 40%; }
+        .price-table td { font-weight: bold; text-align: right; }
 
-        footer { padding: 60px 20px; text-align: center; background: #111; }
-        .sns-links a { color: var(--primary-color); text-decoration: none; margin: 0 10px; font-weight: bold; }
+        /* ボタン */
+        .btn {
+            display: inline-block;
+            padding: 18px 50px;
+            background-color: var(--primary-color);
+            color: #000;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: 0.4s;
+            border-radius: 2px;
+        }
+        .btn:hover { background-color: #fff; transform: translateY(-3px); }
+
+        /* ★スクロールアニメーション用 */
+        .js-fade {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1), transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .js-fade.is-active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* フッター */
+        footer { text-align: center; padding: 80px 20px; background: #111; color: var(--accent-gray); font-size: 0.7rem; }
+        .sns-links { margin-bottom: 30px; }
+        .sns-links a { color: var(--primary-color); text-decoration: none; margin: 0 15px; font-weight: bold; letter-spacing: 0.1em; }
+
+        /* レスポンシブ対応 */
+        @media (max-width: 768px) {
+            header { padding: 15px 20px; }
+            section { padding: 80px 20px; }
+            .price-table th { width: 50%; }
+        }
     </style>
 </head>
 <body>
@@ -43,89 +129,121 @@
     <div class="logo">RENOVO</div>
     <nav>
         <a href="#concept">CONCEPT</a>
+        <a href="#space">SPACE</a>
         <a href="#lesson">LESSON</a>
         <a href="#price">PRICE</a>
-        <a href="#contact">CONTACT</a>
     </nav>
 </header>
 
 <div class="hero">
-    <h1 class="fade-in">RENOVO STUDIO</h1>
-    <p class="fade-in">築古倉庫 × 音楽の創造空間</p>
-    <a href="#contact" class="btn fade-in">RESERVE</a>
+    <p class="en-title js-fade">Old Warehouse × New Music</p>
+    <h1 class="js-fade">その響き、ヴィンテージ。</h1>
+    <p class="js-fade">築古倉庫をリノベーションした、唯一無二の音楽練習空間。</p>
+    <a href="#contact" class="btn js-fade">RESERVE / CONTACT</a>
 </div>
 
-<section id="concept" class="fade-in">
-    <h2 class="section-title">CONCEPT</h2>
-    <div style="text-align: center;">
-        <p>「その響き、ヴィンテージ。」<br>1960年代の倉庫をリノベーションした、インダストリアルな空間。<br>最新の防音設備と、倉庫特有の豊かな残響が共鳴します。</p>
+<section id="concept" class="js-fade">
+    <div class="section-title">
+        <h2>CONCEPT</h2>
+        <p>唯一無二の響きを、その手に。</p>
+    </div>
+    <div style="text-align: center; max-width: 750px; margin: 0 auto;">
+        <p>高い天井、剥き出しの鉄骨。歴史を刻んだ倉庫が、あなたのインスピレーションを刺激するスタジオに生まれ変わりました。<br>
+        初心者からプロフェッショナルまで、日常を忘れて音楽に没頭できる場所を提供します。</p>
     </div>
 </section>
 
-<section id="space" class="fade-in">
-    <h2 class="section-title">SPACE</h2>
+<section id="space">
+    <div class="section-title js-fade">
+        <h2>SPACE</h2>
+        <p>施設・設備紹介</p>
+    </div>
     <div class="grid">
-        <div class="card">
-            <h4>Studio A (Large)</h4>
-            <p>バンド練習に最適な25帖の空間。</p>
+        <div class="card js-fade">
+            <h3>Studio A</h3>
+            <p>25帖の広さを誇るメインスタジオ。バンドリハーサルやMV撮影にも対応。</p>
         </div>
-        <div class="card">
-            <h4>Soundproof Room</h4>
-            <p>レコーディングにも対応した高遮音性能。</p>
+        <div class="card js-fade">
+            <h3>Booth</h3>
+            <p>高遮音性能を備えたレコーディングブース。個人練習にも最適です。</p>
+        </div>
+        <div class="card js-fade">
+            <h3>Lounge</h3>
+            <p>インダストリアルな家具が並ぶ休憩スペース。音楽仲間との交流の場に。</p>
         </div>
     </div>
 </section>
 
-<section id="lesson" class="fade-in">
-    <h2 class="section-title">LESSON</h2>
+<section id="lesson">
+    <div class="section-title js-fade">
+        <h2>LESSON</h2>
+        <p>音楽スクール</p>
+    </div>
     <div class="grid">
-        <div class="card">
+        <div class="card js-fade">
             <h3>Guitar / Bass</h3>
-            <p>初心者歓迎。アンプの音作りの基礎から指導します。</p>
+            <p>コードの押さえ方から、倉庫の響きを活かしたアンプの音作りまで指導。</p>
         </div>
-        <div class="card">
+        <div class="card js-fade">
             <h3>Drums</h3>
-            <p>倉庫の響きを活かした生ドラムレッスン。</p>
+            <p>生ドラムの迫力を体感。リズムの基礎からプロ志向のテクニックまで。</p>
         </div>
-        <div class="card">
+        <div class="card js-fade:">
             <h3>Instructor</h3>
-            <p>現役ミュージシャンが個性に合わせたカリキュラムを提案。</p>
+            <p>現役で活躍するミュージシャンが講師。あなたの個性に寄り添います。</p>
         </div>
     </div>
 </section>
 
-<section id="price" class="fade-in">
-    <h2 class="section-title">PRICE</h2>
-    <table>
-        <tr><th>Studio Use</th><td>¥1,500 / 1h 〜</td></tr>
-        <tr><th>Individual Lesson</th><td>¥12,000 / Month 〜</td></tr>
-        <tr><th>Trial Lesson</th><td>¥1,000 / 30min</td></tr>
-    </table>
+<section id="price" class="js-fade">
+    <div class="section-title">
+        <h2>PRICE</h2>
+        <p>料金案内</p>
+    </div>
+    <div style="max-width: 600px; margin: 0 auto;">
+        <table class="price-table">
+            <tr><th>スタジオレンタル</th><td>¥1,500 / 1時間 〜</td></tr>
+            <tr><th>マンツーマンレッスン</th><td>¥12,000 / 月3回 〜</td></tr>
+            <tr><th>初回体験レッスン</th><td>¥1,000 / 30分</td></tr>
+        </table>
+    </div>
 </section>
 
-<section id="contact" class="fade-in">
-    <h2 class="section-title">CONTACT</h2>
-    <div style="text-align: center;">
-        <p>東京都〇〇区倉庫街 1-2-3</p>
-        <p>Open: 10:00 - 24:00</p>
-        <a href="#" class="btn">体験レッスン予約（公式LINE）</a>
+<section id="contact" class="js-fade">
+    <div style="background: var(--surface-color); padding: 60px 40px; text-align: center; border-radius: 2px;">
+        <div class="section-title">
+            <h2>CONTACT</h2>
+            <p>お問い合わせ</p>
+        </div>
+        <p style="margin-bottom: 30px;">東京都〇〇区倉庫街 1-2-3<br>見学・体験レッスンは随時受付中。</p>
+        <a href="#" class="btn">公式LINEで予約・質問</a>
     </div>
 </section>
 
 <footer>
     <div class="sns-links">
-        <a href="#">Instagram</a> / <a href="#">YouTube</a>
+        <a href="#">INSTAGRAM</a>
+        <a href="#">YOUTUBE</a>
     </div>
-    <p style="margin-top:20px; font-size: 0.7rem; color: #666;">&copy; 2026 RENOVO MUSIC STUDIO. Developed by hiroki222222</p>
+    <p>&copy; 2026 RENOVO MUSIC STUDIO. Developed by hiroki222222</p>
 </footer>
 
 <script>
+    const targets = document.querySelectorAll('.js-fade');
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) entry.target.classList.add('is-active');
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-active');
+            }
         });
-    }, { threshold: 0.2 });
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    }, { 
+        rootMargin: '0px 0px -15% 0px', 
+        threshold: 0 
+    });
+
+    targets.forEach(target => {
+        observer.observe(target);
+    });
 </script>
 
 </body>
